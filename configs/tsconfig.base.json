@@ -10,6 +10,6 @@
     "declarationMap": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts"],
-  "exclude": ["node_modules", ".vscode"]
+  "include": ["../src/**/*.ts", "../src/tests/**/*.ts"],
+  "exclude": ["../node_modules", "../.vscode"]
 }

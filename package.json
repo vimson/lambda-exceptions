@@ -1,0 +1,70 @@
+{
+  "name": "lambda-exceptions",
+  "version": "0.0.0-development",
+  "description": "An npm package for catching all the exceptions thrown by the code base, log and send error response to the client",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "test": "mocha",
+    "semantic-release": "semantic-release",
+    "prepack": "npm run build"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vimson/lambda-exceptions.git"
+  },
+  "keywords": [
+    "npm",
+    "javascript",
+    "typescript",
+    "esm",
+    "cjs",
+    "nodejs",
+    "commonjs",
+    "ecmascript",
+    "lambda",
+    "exceptions"
+  ],
+  "author": "Vimson Varghese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vimson/lambda-exceptions/issues"
+  },
+  "homepage": "https://github.com/vimson/lambda-exceptions",
+  "devDependencies": {
+    "@types/mocha": "^9.1.1",
+    "mocha": "^10.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4",
+    "semantic-release": "^19.0.3",
+    "@types/chai": "^4.3.3",
+    "chai": "^4.3.6"
+  }
+}

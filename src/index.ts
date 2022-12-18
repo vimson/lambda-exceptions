@@ -1,2 +1,2 @@
 export * from './types/common.type';
-export * from './lib/error-handler.lib';
+export * from './libs/error-handler.lib';

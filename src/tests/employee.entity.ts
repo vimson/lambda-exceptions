@@ -1,4 +1,4 @@
-import { GenericError } from '../lib/error-handler.lib';
+import { GenericError } from '../libs/error-handler.lib';
 
 class Employee {
   private id!: string;

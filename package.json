@@ -24,7 +24,7 @@
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
     "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
-    "test": "ts-mocha -p configs/tsconfig.cjs.json",
+    "test": "mocha",
     "tdd": "mocha -w",
     "semantic-release": "semantic-release",
     "prepack": "npm run build"
@@ -62,8 +62,7 @@
   "devDependencies": {
     "@types/aws-lambda": "8.10.109",
     "@types/chai": "^4.3.3",
-    "@types/expect": "24.3.0",
-    "@types/mocha": "9.1.1",
+    "@types/mocha": "10.0.1",
     "@types/node": "18.11.16",
     "chai": "^4.3.6",
     "mocha": "^10.0.0",

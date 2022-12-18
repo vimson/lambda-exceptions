@@ -1,6 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
-import { httpErrorHandler } from '../lib/error-handler.lib';
+import { httpErrorHandler } from '../index';
 import { httpGatewayEvent } from './data/http-gateway-event';
 import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
 import { Employee } from './employee.entity';

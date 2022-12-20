@@ -1,6 +1,6 @@
 {
   "name": "lambda-exceptions",
-  "version": "0.0.2-development",
+  "version": "1.0.0",
   "description": "An npm package for catching all the exceptions thrown by the code base, log and send error response to the client",
   "exports": {
     ".": {

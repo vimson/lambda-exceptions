@@ -18,7 +18,7 @@ import { httpGatewayEvent } from './data/http-gateway-event';
 import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
 import { Employee } from './employee.entity';
 
-const wrongTrack = async (
+const wrongTrackHandler = async (
   event: APIGatewayEvent
 ): Promise<APIGatewayProxyResult> => {
   const employee = new Employee('John', 30, 1000);
@@ -30,7 +30,7 @@ const wrongTrack = async (
   };
 };
 
-const rightTrack = async (
+const rightTrackHandler = async (
   event: APIGatewayEvent
 ): Promise<APIGatewayProxyResult> => {
   const employee = new Employee('Emily', 3, 1000);
@@ -50,14 +50,14 @@ const customLogger = (message: string) => {
 
 describe('Lambda error handler', () => {
   it('Error handler testing', async () => {
-    const trackHandler = httpErrorHandler(customLogger)(wrongTrack);
+    const trackHandler = httpErrorHandler(customLogger)(wrongTrackHandler);
 
     const response = await trackHandler(httpGatewayEvent, {} as Context);
     expect(response.statusCode).to.equal(404);
   });
 
   it('Correct handler testing', async () => {
-    const trackHandler = httpErrorHandler()(rightTrack);
+    const trackHandler = httpErrorHandler()(rightTrackHandler);
 
     const response = await trackHandler(httpGatewayEvent, {} as Context);
     expect(response.statusCode).to.equal(200);
@@ -98,4 +98,4 @@ class Employee {
 }
 ```
 
-errorStack will get logged into the logger based on the configuration your passed through.
+errorStack will get logged into the logger based on the configuration you passed through.

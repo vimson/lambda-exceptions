@@ -8,6 +8,8 @@ Also we can specify the logger in the configuration of this exception handler fu
 
 Here we are using `aws-lambda` as a dependency package.
 
+This package has one wrapper function `httpErrorHandler` for exception handling and class `GenericError` which is extending Error class added for throwing custom errors in case.
+
 An example code implementation is below.
 
 ```typescript
@@ -69,3 +71,31 @@ In the above code you can see, I define customLogger using console.log and passe
 ```typescript
 const trackHandler = httpErrorHandler(customLogger)(wrongTrack);
 ```
+
+`GenericError` implementation example is
+
+```typescript
+import { GenericError } from 'lambda-exceptions';
+
+class Employee {
+  private id!: string;
+  private name: string;
+  private age: number;
+  private salary: number;
+
+  constructor(name: string, age: number, salary: number) {
+    this.name = name;
+    this.age = age;
+    this.salary = salary;
+  }
+
+  async getEmployee(): Promise<Employee> {
+    const found = false;
+    if (!found) {
+      throw new GenericError('Employee not found', 404);
+    }
+  }
+}
+```
+
+errorStack will get logged into the logger based on the configuration your passed through.

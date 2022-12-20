@@ -34,13 +34,13 @@ const httpErrorHandler =
 
       if (error instanceof GenericError) {
         statusCode = error.statusCode;
-        errorStack = errorMessage = error.message ?? errorMessage;
+        errorMessage = error.message ?? errorMessage;
       }
 
       if (logger) {
-        logger(errorMessage);
+        logger(errorStack);
       } else {
-        console.log(errorMessage);
+        console.log(errorStack);
       }
 
       return {
